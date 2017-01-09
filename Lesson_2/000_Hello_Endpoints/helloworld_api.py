@@ -18,6 +18,12 @@ REQUEST_CONTAINER = endpoints.ResourceContainer(
     name=messages.StringField(1),
 )
 
+REQUEST_CONTAINER_PERIOD = endpoints.ResourceContainer(
+    message_types.VoidMessage,
+    name=messages.StringField(1),
+    period=messages.StringField(2),
+)
+
 
 package = 'Hello'
 
@@ -31,16 +37,21 @@ class Hello(messages.Message):
 class HelloWorldApi(remote.Service):
     """Helloworld API v1."""
 
-    @endpoints.method(message_types.VoidMessage, Hello,
-      path = "sayHello", http_method='GET', name = "sayHello")
+    @endpoints.method(message_types.VoidMessage, Hello, path="sayHello", http_method='GET', name="sayHello")
     def say_hello(self, request):
-      return Hello(greeting="Hello World")
+        return Hello(greeting="Hello World")
 
-    @endpoints.method(REQUEST_CONTAINER, Hello,
-      path = "sayHelloByName", http_method='GET', name = "sayHelloByName")
+    @endpoints.method(REQUEST_CONTAINER, Hello, path="sayHelloByName", http_method='GET', name="sayHelloByName")
     def say_hello_by_name(self, request):
-      greet = "Hello {}".format(request.name)
-      return Hello(greeting=greet)
+        greet = "Hello {}".format(request.name)
+        return Hello(greeting=greet)
+
+    # Nate's code
+    @endpoints.method(REQUEST_CONTAINER_PERIOD, Hello, path='greetByPeriod', http_method='GET', name='greetByPeriod')
+    def greet_by_period(self, request):
+        greet = 'Good {}, {}!'.format(request.period, request.name)
+        print 'nate was here'
+        return Hello(greeting=greet)
 
 
 APPLICATION = endpoints.api_server([HelloWorldApi])
