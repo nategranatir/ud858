@@ -76,7 +76,7 @@ class ConferenceApi(remote.Service):
 
         # TODO 3
         # get the entity from datastore by using get() on the key
-        profile = None
+        profile = p_key.get()
         if not profile:
             profile = Profile(
                 key = p_key, # TODO 1 step 4. replace with the key from step 3
@@ -105,6 +105,7 @@ class ConferenceApi(remote.Service):
                         setattr(prof, field, str(val))
             # TODO 4
             # put the modified profile to datastore
+            prof.put()
 
         # return ProfileForm
         return self._copyProfileToForm(prof)
