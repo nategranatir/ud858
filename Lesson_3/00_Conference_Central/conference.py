@@ -71,13 +71,15 @@ class ConferenceApi(remote.Service):
         #         and import getUserId from it
         # step 2. get user id by calling getUserId(user)
         # step 3. create a new key of kind Profile from the id
+        user_id = getUserId(user)
+        p_key = ndb.Key(Profile, user_id)
 
         # TODO 3
         # get the entity from datastore by using get() on the key
         profile = None
         if not profile:
             profile = Profile(
-                key = None, # TODO 1 step 4. replace with the key from step 3
+                key = p_key, # TODO 1 step 4. replace with the key from step 3
                 displayName = user.nickname(), 
                 mainEmail= user.email(),
                 teeShirtSize = str(TeeShirtSize.NOT_SPECIFIED),
