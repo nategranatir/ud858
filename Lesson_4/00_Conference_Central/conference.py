@@ -274,6 +274,9 @@ class ConferenceApi(remote.Service):
         q = q.filter(Conference.topics == 'Medical Innovations')
         q = q.order(Conference.name)
 
+        # q = q.filter(Conference.month == 6)
+
+        q = q.filter(Conference.maxAttendees > 10)
 
         return ConferenceForms(
             items=[self._copyConferenceToForm(conf, "") for conf in q]
