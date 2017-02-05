@@ -1,0 +1,21 @@
+
+Google Console
+https://console.cloud.google.com/appengine/taskqueues?project=udacity-class-project-142701&serviceId=default&tab=CRON
+
+
+Logs
+https://console.cloud.google.com/logs/viewer?project=udacity-class-project-142701&resource=gae_app%2Fmodule_id%2Fdefault&logName=projects%2Fudacity-class-project-142701%2Flogs%2Fappengine.googleapis.com%252Frequest_log&minLogLevel=0&expandAll=false&serviceId=default&timestamp=2017-02-05T07:42:18.687276000Z
+
+
+Application (works better in incognito mode for some reason)
+https://udacity-class-project-142701.appspot.com/#/conference
+
+
+APIs Explorer (App Engine)
+https://apis-explorer.appspot.com/apis-explorer/?base=https://udacity-class-project-142701.appspot.com/_ah/api#p/conference/v1/conference.getAnnouncement?_h=4&
+
+
+APIs Explorer (Localhost - Doesn't work)
+https://apis-explorer.appspot.com/apis-explorer/?base=http%3A%2F%2Flocalhost%3A8003%2F_ah%2Fapi#p/
+
+
